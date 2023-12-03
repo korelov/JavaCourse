@@ -1,4 +1,4 @@
-package org.example.homework;
+package org.homework.one;
 
 public class HornsAndHooves {
 
@@ -47,7 +47,7 @@ public class HornsAndHooves {
         double tax = 0;
         if (profit > 2_000_000) {
             tax = 80_000 + 100_000 + (profit - 2_000_000) * 0.13;
-        } else if (profit > 1_000_001 && profit <= 2_000_000) {
+        } else if (profit > 1_000_000 && profit <= 2_000_000) {
             tax = 80_000 + (profit - 1_000_000) * 0.10;
         } else {
             tax = profit * 0.08;
