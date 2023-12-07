@@ -1,11 +1,15 @@
 package org.homework.two.office;
 
-public class Manager{
+public class Manager {
 
-    public static String name;
+    private final String name;
 
     public Manager(String name) {
-        Manager.name = name;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void say() {

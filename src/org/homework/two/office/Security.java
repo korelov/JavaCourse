@@ -2,10 +2,14 @@ package org.homework.two.office;
 
 public class Security {
 
-    static String name;
+    private final String name;
 
     public Security(String name) {
-        Security.name = name;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void say() {

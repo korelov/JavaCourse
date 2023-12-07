@@ -2,13 +2,17 @@ package org.homework.two.office;
 
 public class Boss {
 
-    static String name;
+    private final String name;
 
     public Boss(String name) {
         this.name = name;
     }
 
-    public void say() {
-        System.out.println(Manager.name + " быстрее!");
+    public String getName() {
+        return name;
+    }
+
+    public void say(Manager manager) {
+        System.out.println(manager.getName() + " быстрее!");
     }
 }
