@@ -2,6 +2,7 @@ package org.javaacadmey.wonderfield;
 
 import org.javaacadmey.wonderfield.player.Player;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -18,15 +19,11 @@ public class Game {
     private Tableau tableau;
     private Yakubovich yakubovich;
 
-    private Player[] winners = new Player[NUMBER_OF_PLAYERS];
+    private final Player[] winners = new Player[NUMBER_OF_PLAYERS];
     private Player[] players = new Player[NUMBER_OF_PLAYERS];
 
     public void setFinalRound(boolean finalRound) {
         isFinalRound = finalRound;
-    }
-
-    public boolean isFinalRound() {
-        return isFinalRound;
     }
 
     private String[] questions() {
@@ -97,14 +94,13 @@ public class Game {
 
     private Player startPlayRound(Player[] players) {
         while (true) {
-            for (int i = 0; i < players.length; i++) {
+            for (Player value : players) {
                 boolean result;
-                Player player = players[i];
                 do {
-                    result = yakubovich.checkAnswer(player.movePlayer(), tableau);
+                    result = yakubovich.checkAnswer(value.movePlayer(), tableau);
                     if (!tableau.containsUnknownLetters()) {
-                        yakubovich.shoutWinner(player, isFinalRound());
-                        return player;
+                        yakubovich.shoutWinner(value, isFinalRound);
+                        return value;
                     }
                 } while (result);
             }
@@ -119,9 +115,7 @@ public class Game {
             tableau.init(answers[i]);
             tableau.print();
             winners[i] = startPlayRound(players);
-            if (i + 1 == INDEX_OF_THE_FINAL_ROUND) {
-                setFinalRound(true);
-            }
+            setFinalRound(checkWinners(winners));
         }
     }
 
@@ -131,5 +125,13 @@ public class Game {
         tableau.init((answers[INDEX_OF_THE_FINAL_ROUND]));
         tableau.print();
         startPlayRound(winners);
+    }
+
+    private boolean checkWinners(Player[] winners) {
+        boolean result = false;
+        for (Player winner : winners) {
+            result = winner != null;
+        }
+        return result;
     }
 }
