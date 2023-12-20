@@ -145,6 +145,7 @@ public class Homework3 {
 
         house.setStreetName("Тестовый ввод");
 
+
         System.out.println(house);
         System.out.println(spb);
     }
