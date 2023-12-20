@@ -3,9 +3,7 @@ package org.javaacadmey.wonderfield.player;
 import org.javaacadmey.wonderfield.Game;
 
 public class Player {
-
     private final String name;
-
     private final String city;
 
     public Player(String name, String city) {
@@ -23,6 +21,7 @@ public class Player {
 
     public String enterLetters() {
         while (true) {
+            System.out.println("Введите букву");
             String letter = Game.scanner.nextLine();
             if (letter.length() == 1 && letter.matches("^[а-яА-Я]")) {
                 System.out.printf("Игрок %s: буква %s \n", name, letter);
@@ -35,6 +34,7 @@ public class Player {
 
     public String enterWorld() {
         while (true) {
+            System.out.println("Введите слово");
             String world = Game.scanner.next();
             if (world.matches("^[a-zA-Z0-9\\\\s]+$")) {
                 System.out.println("Ошибка! слово должно быть на русском языке");
@@ -51,13 +51,21 @@ public class Player {
                 + " если хотите слово нажмите 'c' и enter\n");
         while (true) {
             String letter = Game.scanner.nextLine();
-            if (letter.contains("б")) {
+            if (letter.contains("б") && letter.length() == 1) {
                 return new PlayerAnswer(enterLetters(), "буква");
-            } else if (letter.contains("c")) {
+            } else if (letter.contains("с") && letter.length() == 1) {
                 return new PlayerAnswer(enterWorld(), "слово");
             } else {
                 System.out.println("Некорректное значение, введите 'б' или 'с'");
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

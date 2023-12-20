@@ -5,28 +5,28 @@ import org.javaacadmey.wonderfield.player.Player;
 import java.util.Scanner;
 
 public class Game {
-
+    public static Scanner scanner = new Scanner(System.in);
     public static final int NUMBER_OF_PLAYERS = 3;
     public static final int NUMBER_OF_ROUNDS = 4;
     public static final int GROUP_ROUNDS = 3;
     public static final int INDEX_OF_THE_FINAL_ROUND = 3;
+    private final String[] questions = questions();
+    private final String[] answers = answers();
 
-    private String[] questions = questions();
-    private String[] answers = answers();
-    public static Scanner scanner = new Scanner(System.in);
+    private boolean isFinalRound;
 
+    private Tableau tableau;
     private Yakubovich yakubovich;
 
     private Player[] winners = new Player[NUMBER_OF_PLAYERS];
     private Player[] players = new Player[NUMBER_OF_PLAYERS];
 
-
-    public String[] getQuestions() {
-        return questions;
+    public void setFinalRound(boolean finalRound) {
+        isFinalRound = finalRound;
     }
 
-    public String[] getAnswers() {
-        return answers;
+    public boolean isFinalRound() {
+        return isFinalRound;
     }
 
     private String[] questions() {
@@ -43,16 +43,7 @@ public class Game {
     }
 
     public void init() {
-        System.out.println("Запуск игры \"Поле Чудес\" - подготовка к игре."
-                + " Вам нужно ввести вопросы и ответы для игры.");
-        this.questions = new String[NUMBER_OF_ROUNDS];
-        this.answers = new String[NUMBER_OF_ROUNDS];
-        for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
-            System.out.printf("Введите вопрос #%d\n", i + 1);
-            questions[i] = scanner.nextLine();
-            System.out.printf("Введите ответ на вопрос #%d\n", i + 1);
-            answers[i] = scanner.nextLine();
-        }
+        System.out.println("Запуск игры \"Поле Чудес\" - подготовка к игре.");
         System.out.println("Иницализация закончена, игра начнется через 5 секунд");
         try {
             Thread.sleep(5000);
@@ -62,9 +53,83 @@ public class Game {
         System.out.println("\n".repeat(50));
     }
 
-    public Player[] createPlayer() {
+    private String enterName() {
+        while (true) {
+            String name = scanner.next();
+            if (name.matches("^[a-zA-Z0-9\\\\s]+$")) {
+                System.out.println("Ошибка! Имя должно быть на русском языке");
+            } else {
+                return name;
+            }
+        }
+    }
 
+    private String enterCity() {
+        while (true) {
+            String city = scanner.next();
+            if (city.matches("^[a-zA-Z0-9\\\\s]+$")) {
+                System.out.println("Ошибка! Город должен быть на русском языке");
+            } else {
+                return city;
+            }
+        }
+    }
 
+    public Player[] createPlayers() {
+        for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
+            System.out.printf("Игрок №%d представьтесь: Ваше имя ?\n", i + 1);
+            String name = enterName();
+            System.out.printf("%s Из какого вы города ?\n", name);
+            String city = enterCity();
+            players[i] = new Player(name, city);
+        }
         return players;
+    }
+
+    public void start() {
+        yakubovich = new Yakubovich();
+        tableau = new Tableau();
+        yakubovich.showStart();
+        playGroupRounds();
+        playFinalRound(winners);
+        yakubovich.showEnd();
+    }
+
+    private Player startPlayRound(Player[] players) {
+        while (true) {
+            for (int i = 0; i < players.length; i++) {
+                boolean result;
+                Player player = players[i];
+                do {
+                    result = yakubovich.checkAnswer(player.movePlayer(), tableau);
+                    if (!tableau.containsUnknownLetters()) {
+                        yakubovich.shoutWinner(player, isFinalRound());
+                        return player;
+                    }
+                } while (result);
+            }
+        }
+    }
+
+    private void playGroupRounds() {
+        for (int i = 0; i < GROUP_ROUNDS; i++) {
+            players = createPlayers();
+            yakubovich.welcomeThreePlayers(players, i + 1);
+            yakubovich.askQuestion(questions, i);
+            tableau.init(answers[i]);
+            tableau.print();
+            winners[i] = startPlayRound(players);
+            if (i + 1 == INDEX_OF_THE_FINAL_ROUND) {
+                setFinalRound(true);
+            }
+        }
+    }
+
+    private void playFinalRound(Player[] winners) {
+        yakubovich.welcomeThreePlayers(winners, INDEX_OF_THE_FINAL_ROUND);
+        yakubovich.askQuestion(questions, INDEX_OF_THE_FINAL_ROUND);
+        tableau.init((answers[INDEX_OF_THE_FINAL_ROUND]));
+        tableau.print();
+        startPlayRound(winners);
     }
 }
