@@ -6,12 +6,12 @@ import org.javaacadmey.wonderfield.player.PlayerAnswer;
 public class Yakubovich {
 
     public void showStart() {
-        System.out.println("Здравствуйте, уважаемые дамы и господа!"
+        System.out.println("Якубович: Здравствуйте, уважаемые дамы и господа!"
                 + " Пятница! В эфире капитал-шоу «Поле чудес»!");
     }
 
     public void showEnd() {
-        System.out.println("Мы прощаемся с вами ровно на одну неделю!"
+        System.out.println("Якубович: Мы прощаемся с вами ровно на одну неделю!"
                 + " Здоровья вам, до встречи!");
     }
 
@@ -25,14 +25,14 @@ public class Yakubovich {
             }
         }
         if (round == Game.INDEX_OF_THE_FINAL_ROUND) {
-            System.out.printf("Приглашаю победителей групповых этапов: %s\n", stringBuilder);
+            System.out.printf("Якубович: Приглашаю победителей групповых этапов: %s\n", stringBuilder);
         } else {
-            System.out.printf("Приглашаю %d тройку игроков: %s\n", round, stringBuilder);
+            System.out.printf("Якубович: Приглашаю %d тройку игроков: %s\n", round, stringBuilder);
         }
     }
 
     public void askQuestion(String[] question, int round) {
-        System.out.println("Внимание вопрос\n" + question[round]);
+        System.out.println("Якубович: Внимание вопрос\n" + question[round]);
     }
 
     public void shoutWinner(Player player, boolean isFinalRound) {
@@ -63,7 +63,7 @@ public class Yakubovich {
             return true;
         } else {
             System.out.println("Якубович: Нет такой буквы! Следующий игрок, крутите барабан!");
-            System.out.println("_________________________________");
+            System.out.println("__________________________________");
             return false;
         }
     }
