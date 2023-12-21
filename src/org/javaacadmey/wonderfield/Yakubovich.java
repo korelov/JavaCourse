@@ -11,7 +11,8 @@ public class Yakubovich {
     }
 
     public void showEnd() {
-        System.out.println("Мы прощаемся с вами ровно на одну неделю! Здоровья вам, до встречи!");
+        System.out.println("Мы прощаемся с вами ровно на одну неделю!"
+                + " Здоровья вам, до встречи!");
     }
 
     public void welcomeThreePlayers(Player[] players, int round) {
@@ -24,9 +25,9 @@ public class Yakubovich {
             }
         }
         if (round == Game.INDEX_OF_THE_FINAL_ROUND) {
-            System.out.printf("Приглашаю победителей групповых этапов: %s\n", stringBuilder.toString());
+            System.out.printf("Приглашаю победителей групповых этапов: %s\n", stringBuilder);
         } else {
-            System.out.printf("Приглашаю %d тройку игроков: %s\n", round, stringBuilder.toString());
+            System.out.printf("Приглашаю %d тройку игроков: %s\n", round, stringBuilder);
         }
     }
 
@@ -36,10 +37,10 @@ public class Yakubovich {
 
     public void shoutWinner(Player player, boolean isFinalRound) {
         if (isFinalRound) {
-            System.out.printf("Якубович: И перед нами победитель Капитал шоу поле чудес! Это %s из %s\n",
+            System.out.printf("Якубович: И перед нами победитель Капитал шоу поле чудес! Это %s из %s\n\n",
                     player.getName(), player.getCity());
         } else {
-            System.out.printf("Якубович: Молодец! %s из %s проходит в финал!\n",
+            System.out.printf("Якубович: Молодец! %s из %s проходит в финал!\n\n",
                     player.getName(), player.getCity());
         }
     }
@@ -47,9 +48,10 @@ public class Yakubovich {
     public boolean checkAnswer(PlayerAnswer playerAnswer, Tableau tableau) {
         boolean result = false;
         if (playerAnswer.getTypeAnswerPlayer().equals("буква")) {
-            return checkAnswerLetter(playerAnswer.getAnswerPlayer(), tableau);
-        } else if (playerAnswer.getTypeAnswerPlayer().equals("слово")) {
-            return checkAnswerWord(playerAnswer.getAnswerPlayer(), tableau);
+            result = checkAnswerLetter(playerAnswer.getAnswerPlayer(), tableau);
+        }
+        if (playerAnswer.getTypeAnswerPlayer().equals("слово")) {
+            result = checkAnswerWord(playerAnswer.getAnswerPlayer(), tableau);
         }
         return result;
     }
@@ -57,7 +59,7 @@ public class Yakubovich {
     private boolean checkAnswerLetter(String answerPlayer, Tableau tableau) {
         if (tableau.checkLetters(answerPlayer)) {
             System.out.println("Якубович: Есть такая буква, откройте ее!");
-            tableau.print();
+            tableau.printTableau();
             return true;
         } else {
             System.out.println("Якубович: Нет такой буквы! Следующий игрок, крутите барабан!");
@@ -70,8 +72,9 @@ public class Yakubovich {
         if (tableau.checkWord(answerPlayer)) {
             System.out.printf("Якубович: %s. Абсолютно верно!\n", answerPlayer);
             return true;
+        } else {
+            System.out.println("Якубович: Неверно! Следующий игрок!\n");
+            return false;
         }
-        System.out.println("Якубович: Неверно! Следующий игрок!\n");
-        return false;
     }
 }

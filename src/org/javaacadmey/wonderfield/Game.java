@@ -2,15 +2,14 @@ package org.javaacadmey.wonderfield;
 
 import org.javaacadmey.wonderfield.player.Player;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
-    public static Scanner scanner = new Scanner(System.in);
     public static final int NUMBER_OF_PLAYERS = 3;
     public static final int NUMBER_OF_ROUNDS = 4;
     public static final int GROUP_ROUNDS = 3;
     public static final int INDEX_OF_THE_FINAL_ROUND = 3;
+    public static Scanner scanner = new Scanner(System.in);
     private final String[] questions = questions();
     private final String[] answers = answers();
 
@@ -113,7 +112,7 @@ public class Game {
             yakubovich.welcomeThreePlayers(players, i + 1);
             yakubovich.askQuestion(questions, i);
             tableau.init(answers[i]);
-            tableau.print();
+            tableau.printTableau();
             winners[i] = startPlayRound(players);
             setFinalRound(checkWinners(winners));
         }
@@ -123,7 +122,7 @@ public class Game {
         yakubovich.welcomeThreePlayers(winners, INDEX_OF_THE_FINAL_ROUND);
         yakubovich.askQuestion(questions, INDEX_OF_THE_FINAL_ROUND);
         tableau.init((answers[INDEX_OF_THE_FINAL_ROUND]));
-        tableau.print();
+        tableau.printTableau();
         startPlayRound(winners);
     }
 

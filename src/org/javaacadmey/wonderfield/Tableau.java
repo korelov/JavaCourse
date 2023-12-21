@@ -16,7 +16,7 @@ public class Tableau {
         Arrays.fill(this.lettersOnTableau, "_");
     }
 
-    public void print() {
+    public void printTableau() {
         for (int i = 0; i < getLettersOnTableau().length; i++) {
             if (i < getLettersOnTableau().length - 1) {
                 System.out.print(getLettersOnTableau()[i].toUpperCase() + " ");
@@ -62,5 +62,4 @@ public class Tableau {
         }
         return result;
     }
-
 }
