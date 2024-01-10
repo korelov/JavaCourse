@@ -51,8 +51,7 @@ public class Factory {
         return new Usb();
     }
 
-    public Wheel getWheel(int diameter) {
-        return new Wheel(diameter);
+    public Wheel[] getWheel(int diameter) {
+        return new Wheel[]{new Wheel(diameter), new Wheel(diameter), new Wheel(diameter), new Wheel(diameter)};
     }
-
 }

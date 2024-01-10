@@ -6,8 +6,11 @@ import org.javaacadmey.toyota.vehicle.components.*;
 public abstract class PassengerCar extends Vehicle {
     private final Cruise cruise;
 
-    public PassengerCar(String model, String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter, Cruise cruise, Country country) {
-        super(model, color, maxSpeed, transmission, fuelTank, engine, electrics, headlights, cost, diameter, country);
+    public PassengerCar(String model, String color, int maxSpeed, Transmission transmission,
+                        Wheel[] wheels, FuelTank fuelTank, Engine engine, Electrics electrics,
+                        Headlights headlights, double cost, Country country, Cruise cruise) {
+        super(model, color, maxSpeed, transmission, wheels, fuelTank, engine, electrics,
+                headlights, cost, country);
         this.cruise = cruise;
     }
 

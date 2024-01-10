@@ -4,14 +4,18 @@ import org.javaacadmey.toyota.factory.Country;
 import org.javaacadmey.toyota.vehicle.PassengerCar;
 import org.javaacadmey.toyota.vehicle.components.*;
 
+import static org.javaacadmey.toyota.vehicle.toyota.Toyota.CAMRY;
+
 public class Camry extends PassengerCar {
-    private static final String MODEL = "Camry";
-    private static final int WHEEL_DIAMETER = 17;
-    private static final int MAX_SPEED = 250;
+    private static final String MODEL = CAMRY.getModel();
     private final Usb usb;
 
-    public Camry(String color, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, Cruise cruise, Usb usb, Country country) {
-        super(MODEL, color, MAX_SPEED, Transmission.AUTOMATIC, fuelTank, engine, electrics, headlights, cost, WHEEL_DIAMETER, cruise, country);
+    public Camry(String color, Wheel[] wheels, FuelTank fuelTank, Engine engine,
+                 Electrics electrics, Headlights headlights, double cost,
+                 Country country, Cruise cruise, Usb usb) {
+        super(MODEL, color, CAMRY.getMaxSpeed(), Transmission.AUTOMATIC,
+                wheels, fuelTank, engine, electrics, headlights,
+                cost, country, cruise);
         this.usb = usb;
     }
 

@@ -6,37 +6,32 @@ import org.javaacadmey.toyota.vehicle.components.*;
 
 public abstract class Vehicle {
     private final String model;
-    private String color;
+    private final String color;
     private int maxSpeed;
     private Transmission transmission;
     private boolean isMove;
-    private Wheel[] wheels;
-    private FuelTank fuelTank;
-    private Engine engine;
-    private Electrics electrics;
-    private Headlights headlights;
-    private double cost;
-    private int diameter;
-    private Country country;
+    private final Wheel[] wheels;
+    private final FuelTank fuelTank;
+    private final Engine engine;
+    private final Electrics electrics;
+    private final Headlights headlights;
+    private final double cost;
+    private final Country country;
 
-    public Vehicle(String model, String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter, Country country) {
-
+    public Vehicle(String model, String color, int maxSpeed, Transmission transmission,
+                   Wheel[] wheels, FuelTank fuelTank, Engine engine, Electrics electrics,
+                   Headlights headlights, double cost, Country country) {
         this.model = model;
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmission = transmission;
         this.isMove = false;
-        this.wheels = new Wheel[]{
-                new Wheel(diameter),
-                new Wheel(diameter),
-                new Wheel(diameter),
-                new Wheel(diameter)};
+        this.wheels = wheels;
         this.fuelTank = fuelTank;
         this.engine = engine;
         this.electrics = electrics;
         this.headlights = headlights;
         this.cost = cost;
-        this.diameter = diameter;
         this.country = country;
     }
 
@@ -65,6 +60,14 @@ public abstract class Vehicle {
 
     public String getModel() {
         return model;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public double getCost() {
+        return cost;
     }
 
     private boolean checkWheels() throws StartCarException {
