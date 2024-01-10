@@ -5,7 +5,7 @@ import org.javaacadmey.toyota.factory.Country;
 import org.javaacadmey.toyota.vehicle.components.*;
 
 public abstract class Vehicle {
-
+    private final String model;
     private String color;
     private int maxSpeed;
     private Transmission transmission;
@@ -19,8 +19,9 @@ public abstract class Vehicle {
     private int diameter;
     private Country country;
 
-    public Vehicle(String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter,Country country) {
+    public Vehicle(String model, String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter, Country country) {
 
+        this.model = model;
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmission = transmission;
@@ -42,11 +43,12 @@ public abstract class Vehicle {
     public void startMoving() throws StartCarException {
         isMove = (checkWheels() && checkWheelsPuncture()
                 && checkFuelTank() && checkEngine() && checkElectrics());
+        System.out.println("Машина поехала статус :" + isMove);
     }
 
     public void stopMoving() {
         isMove = false;
-        System.out.println("Машина без движения");
+        System.out.println("Машина без движения статус :" + isMove);
     }
 
     public void refuelVehicle(int fuelCount) {
@@ -61,6 +63,9 @@ public abstract class Vehicle {
         headlights.setWork(false);
     }
 
+    public String getModel() {
+        return model;
+    }
 
     private boolean checkWheels() throws StartCarException {
         for (Wheel wheel : wheels) {

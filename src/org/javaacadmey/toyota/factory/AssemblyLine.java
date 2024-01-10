@@ -9,7 +9,6 @@ import org.javaacadmey.toyota.vehicle.toyota.Solara;
 import static org.javaacadmey.toyota.factory.Country.RUSSIA;
 
 public class AssemblyLine {
-
     private final Factory factory;
 
     public AssemblyLine(Factory factory) throws CountyFactoryNotEqualException {
@@ -26,17 +25,15 @@ public class AssemblyLine {
     }
 
     public Solara createSolara(String color, double cost) {
-
         return new Solara(color, factory.getFuelTank(), factory.getEngine(), factory.getElectrics(), factory.getHeadlights(), cost, factory.getCruise(), factory.getRoof(), factory.getFridge(), RUSSIA);
     }
 
-    public Hiace createHiance(String color, double cost) {
+    public Hiace createHiace(String color, double cost) {
         return new Hiace(color, factory.getFuelTank(), factory.getEngine(), factory.getElectrics(), factory.getHeadlights(), cost, RUSSIA);
     }
 
     public Dyna createDyna(String color, double cost) {
         return new Dyna(color, factory.getFuelTank(), factory.getEngine(), factory.getElectrics(), factory.getHeadlights(), cost, factory.getCharging(), RUSSIA);
     }
-
 
 }
