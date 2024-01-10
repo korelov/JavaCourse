@@ -1,7 +1,8 @@
 package org.javaacadmey.toyota.vehicle;
 
-import org.javaacadmey.toyota.vehicle.components.*;
 import org.javaacadmey.toyota.exception.StartCarException;
+import org.javaacadmey.toyota.factory.Country;
+import org.javaacadmey.toyota.vehicle.components.*;
 
 public abstract class Vehicle {
 
@@ -16,8 +17,9 @@ public abstract class Vehicle {
     private Headlights headlights;
     private double cost;
     private int diameter;
+    private Country country;
 
-    public Vehicle(String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter) {
+    public Vehicle(String color, int maxSpeed, Transmission transmission, FuelTank fuelTank, Engine engine, Electrics electrics, Headlights headlights, double cost, int diameter,Country country) {
 
         this.color = color;
         this.maxSpeed = maxSpeed;
@@ -34,6 +36,7 @@ public abstract class Vehicle {
         this.headlights = headlights;
         this.cost = cost;
         this.diameter = diameter;
+        this.country = country;
     }
 
     public void startMoving() throws StartCarException {

@@ -9,6 +9,10 @@ public class Factory {
         this.country = country;
     }
 
+    public Country getCountry() {
+        return country;
+    }
+
     public Charging getCharging() {
         return new Charging();
     }

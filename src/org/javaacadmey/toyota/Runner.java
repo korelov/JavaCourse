@@ -1,17 +1,18 @@
 package org.javaacadmey.toyota;
 
-import org.javaacadmey.toyota.vehicle.components.*;
+import org.javaacadmey.toyota.exception.CountyFactoryNotEqualException;
 import org.javaacadmey.toyota.exception.StartCarException;
-import org.javaacadmey.toyota.vehicle.toyota.Camry;
-import org.javaacadmey.toyota.vehicle.toyota.Dyna;
-import org.javaacadmey.toyota.vehicle.toyota.Hiace;
-import org.javaacadmey.toyota.vehicle.toyota.Solara;
+import org.javaacadmey.toyota.factory.AssemblyLine;
+import org.javaacadmey.toyota.factory.Country;
+import org.javaacadmey.toyota.factory.Factory;
 
 
 public class Runner {
 
-    public static void main(String[] args) throws StartCarException {
-        ex1();
+    public static void main(String[] args) throws StartCarException, CountyFactoryNotEqualException {
+        Factory factory = new Factory(Country.RUSSIA);
+        AssemblyLine assemblyLine = new AssemblyLine(factory);
+        assemblyLine.createCamry("black", 10_000);
     }
 
     public static void ex1() throws StartCarException {
