@@ -8,7 +8,6 @@ import static org.javaacadmey.toyota.vehicle.toyota.Toyota.DYNA;
 
 public class Dyna extends Truck {
     private static final String MODEL = DYNA.getModel();
-
     private static final int TONNAGE = 2_000;
     private final Charging charging;
 

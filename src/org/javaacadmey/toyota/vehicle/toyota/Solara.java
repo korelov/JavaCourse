@@ -8,7 +8,6 @@ import static org.javaacadmey.toyota.vehicle.toyota.Toyota.SOLARA;
 
 public class Solara extends Cabriolet {
     private static final String MODEL = SOLARA.getModel();
-
     private final Fridge fridge;
 
     public Solara(String color, Wheel[] wheels, FuelTank fuelTank, Engine engine,
