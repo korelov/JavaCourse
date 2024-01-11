@@ -11,14 +11,21 @@ public class Warehouse {
     private int countHiace = 0;
     private int countSolara = 0;
 
-    public Vehicle[] getVehicles() {
-        return vehicles;
+    public int getCountCamry() {
+        return countCamry;
     }
 
-    public int getCurrentVeniclesCount() {
-        return currentVeniclesCount;
+    public int getCountDyna() {
+        return countDyna;
     }
 
+    public int getCountHiace() {
+        return countHiace;
+    }
+
+    public int getCountSolara() {
+        return countSolara;
+    }
 
     public void addCar(Vehicle vehicle) {
         if (vehicleLimit == 0) {
@@ -35,9 +42,9 @@ public class Warehouse {
         }
     }
 
-    private void vehicleCount(String model, boolean addGet) {
+    private void vehicleCount(String model, boolean addGetVehicle) {
         int incDec;
-        if (addGet) {
+        if (addGetVehicle) {
             incDec = 1;
         } else {
             incDec = -1;

@@ -52,6 +52,9 @@ public class Factory {
     }
 
     public Wheel[] getWheel(int diameter) {
-        return new Wheel[]{new Wheel(diameter), new Wheel(diameter), new Wheel(diameter), new Wheel(diameter)};
+        return new Wheel[]{new Wheel(diameter),
+                new Wheel(diameter),
+                new Wheel(diameter),
+                new Wheel(diameter)};
     }
 }
