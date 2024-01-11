@@ -21,13 +21,16 @@ public class Warehouse {
 
 
     public void addCar(Vehicle vehicle) {
+        if (vehicleLimit == 0) {
+            System.out.println("Нет мест");
+        }
         for (int i = 0; i < vehicles.length; i++) {
             if (vehicles[i] == null) {
                 vehicles[i] = vehicle;
                 vehicleLimit--;
                 currentVeniclesCount++;
                 vehicleCount(vehicle.getModel(), true);
-                return;
+                break;
             }
         }
     }
@@ -50,11 +53,11 @@ public class Warehouse {
     public Vehicle getVehicle(String model) {
         for (int i = 0; i < vehicles.length; i++) {
             if (vehicles[i] != null && vehicles[i].getModel().equals(model)) {
-                vehicleLimit++;
-                currentVeniclesCount--;
                 vehicleCount(vehicles[i].getModel(), false);
                 Vehicle vehicle = vehicles[i];
                 vehicles[i] = null;
+                vehicleLimit++;
+                currentVeniclesCount--;
                 return vehicle;
             }
         }

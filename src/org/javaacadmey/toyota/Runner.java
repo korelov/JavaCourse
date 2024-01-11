@@ -27,6 +27,7 @@ public class Runner {
         warehouse.addCar(solara);
         warehouse.addCar(hiace);
         warehouse.addCar(dyna);
+        warehouse.addCar(dyna);
 
         System.out.println(warehouse.getCurrentVeniclesCount());
 
