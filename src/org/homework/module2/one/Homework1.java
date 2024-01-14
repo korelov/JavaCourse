@@ -4,6 +4,8 @@ import org.homework.module2.one.ex1.Bird;
 import org.homework.module2.one.ex1.Dog;
 import org.homework.module2.one.ex1.Tiger;
 import org.homework.module2.one.ex1.Zoo;
+import org.homework.module2.one.ex3.Item;
+import org.homework.module2.one.ex3.Storehouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class Homework1 {
         animalsZoo.getDog().bark();
         animalsZoo.getTiger().growl();
         animalsZoo.getBird().fly();
-
+        System.out.println("+++++++++++++++++++++++++++++");
         //
         //Задание №2
         //Создать два List с числами
@@ -41,6 +43,7 @@ public class Homework1 {
         finalList.addAll(integerListTwo);
         finalList.remove(3);
         System.out.println(finalList.indexOf(10));
+        System.out.println("+++++++++++++++++++++++++++++");
 
         //Задание №3 Создать волшебный склад.
         //Создать класс Item - с единственным атрибутом - имя вещи.
@@ -49,5 +52,24 @@ public class Homework1 {
         //В складе должен быть метод: получить все вещи. Данный метод вернет список, в котором будет только каждая четная вещь из склада.
         //В складе должен быть метод: получить вещь по индексу. Данная вещь пропадает из склада.
         //Склад умеет удалять все вещи, кроме последней.
+
+
+        List<Item> itemList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            itemList.add(new Item("" + i));
+        }
+
+        Storehouse storehouse = new Storehouse();
+//        storehouse.addItem(new Item("вилка"));
+//        storehouse.addItem(new Item("ложка"));
+        storehouse.addItem(itemList);
+
+        List<Item> allEvenItem = storehouse.getAllEvenItem();
+
+        storehouse.printAllItem();
+        for (int i = 0; i < allEvenItem.size(); i++) {
+            System.out.println(allEvenItem.get(i).getName());
+        }
+
     }
 }
