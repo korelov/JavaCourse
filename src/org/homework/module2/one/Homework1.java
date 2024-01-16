@@ -10,22 +10,22 @@ import org.homework.module2.one.ex3.Storehouse;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Homework1 {
     public static void main(String[] args) {
+        System.out.println("------------");
+        //  ex1();
+        System.out.println("------------");
+        // ex2();
+        System.out.println();
+        System.out.println("------------");
+        ex3();
+        System.out.println("------------");
         //Задание №1 Зоопарк
         //Создать три вида животных: Тигр - умеет рычать, Собака - умеет лаять, Птица - умеет летать.
         //Создать зоопарк, который может хранить в себе трех животных.
         //Сделать так, чтобы при получении животного, мы могли воспользоваться специфичным для него действием.
         //Без дженериков задание принято не будет.
-        Dog dog = new Dog();
-        Tiger tiger = new Tiger();
-        Bird bird = new Bird();
-
-        Zoo<Dog, Tiger, Bird> animalsZoo = new Zoo<>(dog, tiger, bird);
-        animalsZoo.getDog().bark();
-        animalsZoo.getTiger().growl();
-        animalsZoo.getBird().fly();
-        System.out.println("+++++++++++++++++++++++++++++");
         //
         //Задание №2
         //Создать два List с числами
@@ -34,42 +34,72 @@ public class Homework1 {
         //Создать финальный лист и заполнить его данными из первого и второго листа, не используя for each.
         //Удалить 3 элемент в финальном листе. Вывести на экран индекс числа 10.
         //
+    }
+
+    public static void ex1() {
+        Bird bird = new Bird();
+        Dog dog = new Dog();
+        Tiger tiger = new Tiger();
+        Zoo<Bird, Dog, Tiger> zoo = new Zoo<>();
+        zoo.addBird(bird);
+        zoo.addDog(dog);
+        zoo.addTiger(tiger);
+        //печатаю кол животных в зоопарке
+        zoo.printAnimalCount();
+        try {
+            zoo.getLastBird().fly();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Нет птиц");
+        }
+        try {
+            zoo.getLastDog().bark();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Нет собак");
+        }
+        try {
+            zoo.getLastTiger().growl();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Нет тигров");
+        }
+        zoo.printAnimalCount();
+    }
+
+    public static void ex2() {
         List<Integer> integerListOne = new ArrayList<>(List.of(5, 2, 4));
         List<Integer> integerListTwo = new ArrayList<>(List.of(7, 10));
-//        List<Integer> finalList = Stream.of(integerListOne, integerListTwo)
-//                .flatMap(List::stream)
-//                .collect(Collectors.toList());
         List<Integer> finalList = new ArrayList<>(integerListOne);
         finalList.addAll(integerListTwo);
         finalList.remove(3);
         System.out.println(finalList.indexOf(10));
-        System.out.println("+++++++++++++++++++++++++++++");
+    }
 
+    public static void ex3() {
         //Задание №3 Создать волшебный склад.
+        Storehouse storehouse = new Storehouse();
         //Создать класс Item - с единственным атрибутом - имя вещи.
         //Склад принимает в себя вещи. У склада нет ограничений в хранении.
+        storehouse.addItem(new Item("вилка"));
+        storehouse.addItem(new Item("ложка"));
+        storehouse.printAllItem();
         //Склад умеет принимать в себя список вещей и хранить их с уже существующими вещами.
-        //В складе должен быть метод: получить все вещи. Данный метод вернет список, в котором будет только каждая четная вещь из склада.
-        //В складе должен быть метод: получить вещь по индексу. Данная вещь пропадает из склада.
-        //Склад умеет удалять все вещи, кроме последней.
-
-
         List<Item> itemList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             itemList.add(new Item("" + i));
         }
-
-        Storehouse storehouse = new Storehouse();
-//        storehouse.addItem(new Item("вилка"));
-//        storehouse.addItem(new Item("ложка"));
         storehouse.addItem(itemList);
-
-        List<Item> allEvenItem = storehouse.getAllEvenItem();
-
         storehouse.printAllItem();
-        for (int i = 0; i < allEvenItem.size(); i++) {
-            System.out.println(allEvenItem.get(i).getName());
+        //В складе должен быть метод: получить все вещи. Данный метод вернет список, в котором будет только каждая четная вещь из склада.
+        List<Item> allEvenItem = storehouse.getAllEvenItem();
+        for (Item item : allEvenItem) {
+            System.out.print(item.getName() + " ");
         }
-
+        //В складе должен быть метод: получить вещь по индексу. Данная вещь пропадает из склада.
+        System.out.println("\n Берем вещь под индексом");
+        storehouse.printAllItem();
+        System.out.println("Вещь с индексом 0 " + storehouse.getItemByIndex(0).getName());
+        storehouse.printAllItem();
+        //Склад умеет удалять все вещи, кроме последней.
+        storehouse.clearItemList();
+        storehouse.printAllItem();
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storehouse {
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public Storehouse() {
         this.itemList = new ArrayList<>();
@@ -28,9 +28,18 @@ public class Storehouse {
         return evenItems;
     }
 
+    public Item getItemByIndex(int index) {
+        return itemList.remove(index);
+    }
+
+    public void clearItemList() {
+        itemList.subList(0, itemList.size() - 1).clear();
+    }
+
     public void printAllItem() {
         for (Item item : itemList) {
             System.out.print(item.getName() + " ");
         }
+        System.out.println();
     }
 }
