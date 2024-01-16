@@ -32,7 +32,7 @@ public class Storehouse {
         return itemList.remove(index);
     }
 
-    public void clearItemList() {
+    public void clearItemListExpectLast() {
         itemList.subList(0, itemList.size() - 1).clear();
     }
 

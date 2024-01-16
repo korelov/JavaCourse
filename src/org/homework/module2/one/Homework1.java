@@ -14,9 +14,9 @@ import java.util.List;
 public class Homework1 {
     public static void main(String[] args) {
         System.out.println("------------");
-        //  ex1();
+        ex1();
         System.out.println("------------");
-        // ex2();
+        ex2();
         System.out.println();
         System.out.println("------------");
         ex3();
@@ -99,7 +99,7 @@ public class Homework1 {
         System.out.println("Вещь с индексом 0 " + storehouse.getItemByIndex(0).getName());
         storehouse.printAllItem();
         //Склад умеет удалять все вещи, кроме последней.
-        storehouse.clearItemList();
+        storehouse.clearItemListExpectLast();
         storehouse.printAllItem();
     }
 }
