@@ -13,14 +13,11 @@ import java.util.List;
 
 public class Homework1 {
     public static void main(String[] args) {
-        System.out.println("------------");
         ex1();
         System.out.println("------------");
         ex2();
-        System.out.println();
         System.out.println("------------");
         ex3();
-        System.out.println("------------");
         //Задание №1 Зоопарк
         //Создать три вида животных: Тигр - умеет рычать, Собака - умеет лаять, Птица - умеет летать.
         //Создать зоопарк, который может хранить в себе трех животных.
