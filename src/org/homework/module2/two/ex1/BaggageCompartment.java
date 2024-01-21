@@ -8,7 +8,7 @@ public class BaggageCompartment {
     private final Worker workerOne;
     private final Worker workerTwo;
     private final Worker workerThree;
-    private static final int MAXIMUM_LOAD_LIMIT = 20;
+    private static final int MAXIMUM_FLIGHT_LOAD_LIMIT = 20;
 
     public BaggageCompartment(Worker workerOne, Worker workerTwo, Worker workerThree) {
         if (workerOne != null && workerTwo != null && workerThree != null) {
@@ -22,7 +22,7 @@ public class BaggageCompartment {
     }
 
     public void load(String flightNumber) {
-        for (int i = 0; i < MAXIMUM_LOAD_LIMIT; i++) {
+        for (int i = 0; i < MAXIMUM_FLIGHT_LOAD_LIMIT; i++) {
             suitcaseLinkedList.add(new Suitcase(flightNumber));
         }
     }

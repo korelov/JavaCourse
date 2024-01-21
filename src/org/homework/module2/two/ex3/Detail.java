@@ -1,11 +1,11 @@
-package org.homework.module2.two.ex2;
+package org.homework.module2.two.ex3;
 
 import java.util.Objects;
 
-public class Item {
-    private String name;
+public class Detail {
+    private final String name;
 
-    public Item(String name) {
+    public Detail(String name) {
         this.name = name;
     }
 
@@ -17,19 +17,19 @@ public class Item {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Item item = (Item) o;
-        return Objects.equals(name, item.name);
+        Detail detail = (Detail) o;
+        return name.equals(detail.name);
     }
 
     @Override
     public int hashCode() {
-        return 1;
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Item{"
-                + "name='" + name + '\''
+        return "Detail{" + "name='"
+                + name + '\''
                 + '}';
     }
 }
