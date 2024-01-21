@@ -1,45 +1,25 @@
 package org.homework.module2.one.ex1;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Zoo<T1 extends Animals, T2 extends Animals, T3 extends Animals> {
+    private T1 animal1;
+    private T2 animal2;
+    private T3 animal3;
 
-public class Zoo<B, D, T extends Animals> {
-    private final List<B> bird;
-    private final List<D> dog;
-    private final List<T> tiger;
-
-    public Zoo() {
-        bird = new ArrayList<>();
-        dog = new ArrayList<>();
-        tiger = new ArrayList<>();
+    public Zoo(T1 animal1, T2 animal2, T3 animal3) {
+        this.animal1 = animal1;
+        this.animal2 = animal2;
+        this.animal3 = animal3;
     }
 
-    public void addBird(B bird) {
-        this.bird.add(bird);
+    public T1 getAnimal1() {
+        return animal1;
     }
 
-    public B getLastBird() {
-        return bird.remove(bird.size() - 1);
+    public T2 getAnimal2() {
+        return animal2;
     }
 
-    public void addDog(D dog) {
-        this.dog.add(dog);
-    }
-
-    public D getLastDog() {
-        return dog.remove(dog.size() - 1);
-    }
-
-    public void addTiger(T tiger) {
-        this.tiger.add(tiger);
-    }
-
-    public T getLastTiger() {
-        return tiger.remove(tiger.size() - 1);
-    }
-
-    public void printAnimalCount() {
-        System.out.printf("В зоопарке на данный момент есть %d птиц(ы), %d собак(и), %d тигр(ов)\n",
-                bird.size(), dog.size(), tiger.size());
+    public T3 getAnimal3() {
+        return animal3;
     }
 }

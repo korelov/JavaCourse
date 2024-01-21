@@ -37,28 +37,12 @@ public class Homework1 {
         Bird bird = new Bird();
         Dog dog = new Dog();
         Tiger tiger = new Tiger();
-        Zoo<Bird, Dog, Tiger> zoo = new Zoo<>();
-        zoo.addBird(bird);
-        zoo.addDog(dog);
-        zoo.addTiger(tiger);
-        //печатаю кол животных в зоопарке
-        zoo.printAnimalCount();
-        try {
-            zoo.getLastBird().fly();
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Нет птиц");
-        }
-        try {
-            zoo.getLastDog().bark();
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Нет собак");
-        }
-        try {
-            zoo.getLastTiger().growl();
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Нет тигров");
-        }
-        zoo.printAnimalCount();
+
+        Zoo<Bird, Dog, Tiger> zoo = new Zoo<>(bird, dog, tiger);
+
+        zoo.getAnimal1().fly();
+        zoo.getAnimal2().bark();
+        zoo.getAnimal3().growl();
     }
 
     public static void ex2() {
@@ -66,7 +50,7 @@ public class Homework1 {
         List<Integer> integerListTwo = new ArrayList<>(List.of(7, 10));
         List<Integer> finalList = new ArrayList<>(integerListOne);
         finalList.addAll(integerListTwo);
-        finalList.remove(3);
+        finalList.remove(2);
         System.out.println(finalList.indexOf(10));
     }
 

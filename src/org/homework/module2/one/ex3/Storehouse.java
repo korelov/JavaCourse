@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storehouse {
-    private final List<Item> itemList;
-
-    public Storehouse() {
-        this.itemList = new ArrayList<>();
-    }
+    private final List<Item> itemList = new ArrayList<>();
 
     public void addItem(Item item) {
         this.itemList.add(item);
