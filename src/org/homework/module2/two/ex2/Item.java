@@ -2,8 +2,8 @@ package org.homework.module2.two.ex2;
 
 import java.util.Objects;
 
-public class Item {
-    private String name;
+public final class Item {
+    private final String name;
 
     public Item(String name) {
         this.name = name;

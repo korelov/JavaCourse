@@ -15,8 +15,9 @@ public class BaggageCompartment {
             this.workerOne = workerOne;
             this.workerTwo = workerTwo;
             this.workerThree = workerThree;
+        } else {
+            throw new NullPointerException("Не все рабочие пришли на смену");
         }
-        throw new NullPointerException("Не все рабочие пришли на смену");
     }
 
     public void load(String flightNumber) {

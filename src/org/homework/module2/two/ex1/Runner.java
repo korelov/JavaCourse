@@ -9,7 +9,6 @@ public class Runner {
                 new BaggageCompartment(workerOne, workerTwo, workerThree);
         baggageCompartment.load("SU-077");
         baggageCompartment.load("AO-222");
-
         baggageCompartment.unload();
     }
 }

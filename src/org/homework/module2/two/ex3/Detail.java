@@ -1,6 +1,6 @@
 package org.homework.module2.two.ex3;
 
-public class Detail {
+public final class Detail {
     private final String name;
 
     public Detail(String name) {
