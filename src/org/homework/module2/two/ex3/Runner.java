@@ -12,8 +12,6 @@ public class Runner {
         map.put(detail1, 1);
         map.put(detail2, 2);
         map.put(detail3, 3);
-        System.out.println(map.containsKey(detail1));
-        System.out.println(detail1.getClass());
         System.out.println(map);
     }
 }

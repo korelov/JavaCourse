@@ -13,6 +13,8 @@ public class Runner {
         map.put(item2, 2);
         map.put(item3, 3);
         System.out.println(map);
+        System.out.println(map.containsKey(item3));
+        System.out.println(map.get(new Item("Апельсин")));
         System.out.println(map.get(item3));
     }
 }
