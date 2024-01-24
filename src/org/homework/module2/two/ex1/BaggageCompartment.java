@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BaggageCompartment {
-    private final Queue<Suitcase> suitcaseLinkedList;
+    private final Queue<Suitcase> suitcaseLinkedList = new LinkedList<>();
     private final Worker workerOne;
     private final Worker workerTwo;
     private final Worker workerThree;
@@ -15,10 +15,8 @@ public class BaggageCompartment {
             this.workerOne = workerOne;
             this.workerTwo = workerTwo;
             this.workerThree = workerThree;
-        } else {
-            throw new NullPointerException("Не все рабочие пришли на смену");
         }
-        suitcaseLinkedList = new LinkedList<>();
+        throw new NullPointerException("Не все рабочие пришли на смену");
     }
 
     public void load(String flightNumber) {
@@ -27,16 +25,15 @@ public class BaggageCompartment {
         }
     }
 
-    public void unLoad() {
+    public void unload() {
         Worker[] workers = {workerOne, workerTwo, workerThree};
         while (!suitcaseLinkedList.isEmpty()) {
             for (Worker worker : workers) {
                 if (suitcaseLinkedList.isEmpty()) {
                     System.out.println("Багажное отделение пустое !");
                     break;
-                } else {
-                    worker.throwSuitcase(suitcaseLinkedList);
                 }
+                worker.throwSuitcase(suitcaseLinkedList);
             }
         }
     }

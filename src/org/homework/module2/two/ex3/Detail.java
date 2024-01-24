@@ -1,7 +1,5 @@
 package org.homework.module2.two.ex3;
 
-import java.util.Objects;
-
 public class Detail {
     private final String name;
 
@@ -11,19 +9,12 @@ public class Detail {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Detail detail = (Detail) o;
-        return name.equals(detail.name);
+        return getClass() == o.getClass();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return 1;
     }
 
     @Override

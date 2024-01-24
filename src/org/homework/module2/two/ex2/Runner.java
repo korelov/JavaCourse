@@ -12,6 +12,7 @@ public class Runner {
         map.put(item1, 1);
         map.put(item2, 2);
         map.put(item3, 3);
+        System.out.println(map);
         System.out.println(map.get(item3));
     }
 }
