@@ -2,15 +2,10 @@ package org.homework.module2.three.ex2;
 
 public class Runner {
     public static void main(String[] args) {
-        Garden appleFarm = () -> {
-            System.out.println("Отдаю яблоки");
-        };
+        Garden<Apple> appleFarm = Apple::new;
+        System.out.println(appleFarm.growFruits().getClass());
 
-        Garden apricotFarm = () -> {
-            System.out.println("Отдаю абрикосы");
-        };
-
-        appleFarm.growFruits();
-        apricotFarm.growFruits();
+        Garden<Apricot> apricotFarm = Apricot::new;
+        System.out.println(apricotFarm.growFruits().getClass());
     }
 }
