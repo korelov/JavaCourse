@@ -2,8 +2,8 @@ package org.homework.module2.three.ex3;
 
 public class Runner {
     public static void main(String[] args) {
-        Divination<String> chamomile = name -> name.length() % 2 == 0 ? "Да" : "Нет";
-        Divination<Human> granny = human ->
+        Divination<String, String> chamomile = name -> name.length() % 2 == 0 ? "Да" : "Нет";
+        Divination<Human, String> granny = human ->
                 human.getAge() + human.getHeight() >= 210 ? "Да" : "Нет";
 
         System.out.println("Гадания на цветках ромашки - "

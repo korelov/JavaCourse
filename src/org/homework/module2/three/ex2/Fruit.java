@@ -1,4 +1,4 @@
 package org.homework.module2.three.ex2;
 
-public class Apple extends Fruit {
+public abstract class Fruit {
 }

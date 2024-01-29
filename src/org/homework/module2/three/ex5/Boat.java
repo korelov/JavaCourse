@@ -1,6 +1,6 @@
 package org.homework.module2.three.ex5;
 
-public class Boat {
+public final class Boat {
     private final int length;
 
     public Boat(int length) {
