@@ -22,6 +22,7 @@ public class Runner {
         skyscraperList.add(pinanInternationalFinancialCenter);
         skyscraperList.add(abrajAlBayt);
         skyscraperList.add(lotteWorldCenter);
+        skyscraperList.add(new Skyscraper("Всемирный торговый центр", 541));
 
         //Убрать дубликаты
         List<Skyscraper> distinctSkyscraper = skyscraperList.stream().distinct().toList();

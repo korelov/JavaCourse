@@ -1,5 +1,7 @@
 package org.homework.module2.four.ex3;
 
+import java.util.Objects;
+
 public class Skyscraper {
     private String name;
     private int height;
@@ -15,6 +17,19 @@ public class Skyscraper {
 
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Skyscraper that = (Skyscraper) o;
+        return height == that.height && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, height);
     }
 
     @Override

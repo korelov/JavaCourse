@@ -8,14 +8,14 @@ import java.util.stream.Stream;
 public class Runner {
 
     public static void main(String[] args) {
-        AtomicInteger atomicIntegerOne = new AtomicInteger(0);
+        AtomicInteger atomicInteger = new AtomicInteger(0);
         List<Car> carListOne = Stream
-                .generate(() -> new Car(String.format("a0%02dан799", atomicIntegerOne.addAndGet(1))))
+                .generate(() -> new Car(String.format("a0%02dан799", atomicInteger.addAndGet(1))))
                 .limit(50).collect(Collectors.toList());
 
-        AtomicInteger atomicIntegerTwo = new AtomicInteger(0);
+        atomicInteger.set(0);
         List<Car> carListTwo = Stream
-                .generate(() -> new Car(String.format("к0%02dсе178", atomicIntegerTwo.addAndGet(1))))
+                .generate(() -> new Car(String.format("к0%02dсе178", atomicInteger.addAndGet(1))))
                 .limit(50).collect(Collectors.toList());
 
         String sortedCarNumber = Stream.concat(carListOne.stream(), carListTwo.stream())
