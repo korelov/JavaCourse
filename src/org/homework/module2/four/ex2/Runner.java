@@ -7,6 +7,7 @@ public class Runner {
     public static void main(String[] args) {
         List<String> stringList = List.of("тонь", "тополь", "боль", "рой", "стройка");
         int number = stringList.stream()
+                .distinct()
                 .flatMap(s -> Arrays.stream(s.split("")))
                 .filter(anObject -> "о".equals(anObject))
                 .reduce((s, s2) -> s + s2.length())
