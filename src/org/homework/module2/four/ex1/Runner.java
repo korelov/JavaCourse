@@ -1,20 +1,28 @@
 package org.homework.module2.four.ex1;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Runner {
 
     public static void main(String[] args) {
-        List<Car> carsOne = IntStream.rangeClosed(1, 50).mapToObj(i -> new Car(String.format("a0%02dан799", i))).toList();
-        List<Car> carsTwo = IntStream.rangeClosed(1, 50).mapToObj(i -> new Car(String.format("к0%02dсе178", i))).toList();
+        AtomicInteger atomicIntegerOne = new AtomicInteger(0);
+        List<Car> carListOne = Stream
+                .generate(() -> new Car(String.format("a0%02dан799", atomicIntegerOne.addAndGet(1))))
+                .limit(50).collect(Collectors.toList());
 
-        List<Car> allCar = new ArrayList<>(carsOne);
-        allCar.addAll(carsTwo);
+        AtomicInteger atomicIntegerTwo = new AtomicInteger(0);
+        List<Car> carListTwo = Stream
+                .generate(() -> new Car(String.format("к0%02dсе178", atomicIntegerTwo.addAndGet(1))))
+                .limit(50).collect(Collectors.toList());
 
-        List<Car> specialCars = allCar.stream().filter(car -> car.getNumber().contains("04")).toList();
-        specialCars.forEach(System.out::println);
+        String sortedCarNumber = Stream.concat(carListOne.stream(), carListTwo.stream())
+                .filter(car -> car.getNumber().contains("04") && !car.getNumber().contains("00"))
+                .map(car -> car.getNumber())
+                .collect(Collectors.joining(", "));
+        System.out.println(sortedCarNumber);
     }
 }
+

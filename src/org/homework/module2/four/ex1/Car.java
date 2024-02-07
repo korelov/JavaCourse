@@ -13,8 +13,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "number='" + number + '\'' +
-                '}';
+        return "Car{"
+                + "number='" + number + '\'' + '}';
     }
 }
